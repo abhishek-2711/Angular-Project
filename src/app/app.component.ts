@@ -7,13 +7,4 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
 
-  recipeSelected: boolean = true;
-  doNavigate(navigateTo: string){
-    if(navigateTo === 'shopping-list'){
-      this.recipeSelected = false;
-    }
-    else{
-      this.recipeSelected = true;
-    }
-  }
 }
