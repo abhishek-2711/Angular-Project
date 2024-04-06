@@ -7,7 +7,10 @@ import { ActivatedRoute, Params } from '@angular/router';
   styleUrl: './reciep-edit.component.css'
 })
 export class ReciepEditComponent implements OnInit{
-  constructor(private route: ActivatedRoute){}
+  constructor(private route: ActivatedRoute){
+    console.log("Recide edit component");
+    
+  }
   editMode = false;
   id: number;
   ngOnInit(){
