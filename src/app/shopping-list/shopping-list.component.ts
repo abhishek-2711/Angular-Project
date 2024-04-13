@@ -11,7 +11,10 @@ import { Subscribable, Subscription } from 'rxjs';
 })
 export class ShoppingListComponent implements OnInit {
 
-  constructor(private shoppingListService: ShoppingListService) { }
+  constructor(private shoppingListService: ShoppingListService) { 
+    console.log("shopping-list component");
+    
+  }
   ingredients: Ingredient[];
   private igChangeSub : Subscription;
   ngOnInit() {
@@ -24,6 +27,10 @@ export class ShoppingListComponent implements OnInit {
 
   ngOnDestroy(){
     this.igChangeSub.unsubscribe();
+  }
+
+  onEditItem(index:number){
+    this.shoppingListService.startedEditing.next(index);
   }
 
 }
