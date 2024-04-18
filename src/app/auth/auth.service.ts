@@ -21,6 +21,8 @@ export class AuthService {
 
   token: string = null;
 
+  private tokenExpiratonTime: any;
+
   constructor(private http: HttpClient, private router: Router) {}
   signUp(email: string, password: string) {
     return this.http
@@ -75,6 +77,19 @@ export class AuthService {
   logout() {
     this.user.next(null);
     this.router.navigate(['/auth']);
+    // to remove userData when logout
+    localStorage.removeItem('userData');
+    if (this.tokenExpiratonTime) {
+      clearTimeout(this.tokenExpiratonTime);
+    }
+
+    this.tokenExpiratonTime = null;
+  }
+
+  autoLogout(expirationDuration: number) {
+    this.tokenExpiratonTime = setTimeout(() => {
+      this.logout();
+    }, expirationDuration * 1000);
   }
 
   private handleAuthentication(
@@ -89,6 +104,7 @@ export class AuthService {
     this.user.next(user);
 
     localStorage.setItem('userData', JSON.stringify(user));
+    this.autoLogout(expiredIn);
   }
 
   //   to retrieve data from local storage
@@ -111,6 +127,11 @@ export class AuthService {
 
     if (loadedUser.token) {
       this.user.next(loadedUser);
+      const expirationDuration =
+        new Date(userData._tokenExpirationDate).getTime() -
+        new Date().getTime();
+
+      this.autoLogout(expirationDuration);
     }
   }
 
