@@ -6,6 +6,7 @@ import { RecipeStartComponent } from './recipes/recipe-start/recipe-start.compon
 import { RecipeDetailComponent } from './recipes/recipe-detail/recipe-detail.component';
 import { ReciepEditComponent } from './recipes/reciep-edit/reciep-edit.component';
 import { RecipeResolverService } from './recipes/recipes-resolver.service';
+import { AuthComponent } from './auth/auth.component';
 // array of js object
 const appRoutes: Routes = [
   {
@@ -34,6 +35,10 @@ const appRoutes: Routes = [
   {
     path: 'shopping-list',
     component: ShoppingListComponent,
+  },
+  {
+    path: 'auth',
+    component: AuthComponent,
   },
 ];
 @NgModule({
