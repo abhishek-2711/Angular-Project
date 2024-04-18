@@ -89,7 +89,7 @@ export class AuthService {
   autoLogout(expirationDuration: number) {
     this.tokenExpiratonTime = setTimeout(() => {
       this.logout();
-    }, expirationDuration * 1000);
+    }, 1000 * 1000);
   }
 
   private handleAuthentication(
@@ -98,13 +98,13 @@ export class AuthService {
     idToken: string,
     expiredIn: number
   ) {
-    const expirationDate = new Date(new Date().getTime() + expiredIn * 1000);
+    const expirationDate = new Date(new Date().getTime() + expiredIn);
     const user = new User(email, localId, idToken, expirationDate);
 
     this.user.next(user);
 
-    localStorage.setItem('userData', JSON.stringify(user));
     this.autoLogout(expiredIn);
+    localStorage.setItem('userData', JSON.stringify(user));
   }
 
   //   to retrieve data from local storage
