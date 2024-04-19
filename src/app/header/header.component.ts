@@ -1,7 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { DataStorageService } from '../shared/data-storage.service';
 import { AuthService } from '../auth/auth.service';
-import { Subscription } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-header',
@@ -22,6 +22,7 @@ export class HeaderComponent implements OnInit {
       this.isAuthenticated = !!user;
     });
   }
+
   saveData() {
     this.dataStorageService.storeRecipes();
   }

@@ -4,18 +4,16 @@ import { ShoppingListComponent } from './shopping-list.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
-import { AppRoutingModule } from '../app-routing.module';
 import { ShoppingListRoutingModule } from './shopping-list.routing.module';
-import { CommonModule } from '@angular/common';
 import { SharedModule } from '../shared/shared.module';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [ShoppingListComponent, ShoppingEditComponent],
   imports: [
-    BrowserModule,
+    CommonModule,
     FormsModule,
     SharedModule,
-    AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
     ShoppingListRoutingModule,

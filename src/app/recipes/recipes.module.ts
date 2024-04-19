@@ -25,9 +25,7 @@ import { SharedModule } from '../shared/shared.module';
   exports: [],
   imports: [
     RecipesRoutingModule,
-    BrowserModule,
     FormsModule,
-    AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
     ShoppingListModule,

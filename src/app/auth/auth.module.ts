@@ -3,6 +3,7 @@ import { AuthComponent } from './auth.component';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { SharedModule } from '../shared/shared.module';
+import { RecipesModule } from '../recipes/recipes.module';
 
 @NgModule({
   declarations: [AuthComponent],
@@ -11,7 +12,7 @@ import { SharedModule } from '../shared/shared.module';
     FormsModule,
     RouterModule.forChild([
       {
-        path: 'auth',
+        path: '',
         component: AuthComponent,
       },
     ]),

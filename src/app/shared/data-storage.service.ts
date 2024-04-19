@@ -28,6 +28,7 @@ export class DataStorageService {
   }
 
   fetchRecipes() {
+    console.log('CALLED');
     return this.http
       .get(
         'https://shoppinglist-2b487-default-rtdb.firebaseio.com/recipes.json'
